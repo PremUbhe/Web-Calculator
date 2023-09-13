@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: auto;
+            margin-top: 100px;
+            width: 300px;
+            background-color: gray;
+            border-radius: 10px;
+        }
+
+        .display {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+
+        input {
+            width: 80%;
+            height: 50px;
+            margin: 10px 0px;
+            border: 2px solid black;
+            border-radius: 10px;
+            font-size: 20px;
+            padding: 0 10px;
+        }
+
+        .buttons_2 {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .big_but_1,
+        .big_but_2 {
+            width: 100px;
+            height: 50px;
+            font-size: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .big_but_1 {
+            background-color: red;
+        }
+
+        .big_but_2 {
+            background-color: orange;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            padding: 10px;
+        }
+
+        button {
+            background-color: #fff;
+            border-radius: 100%;
+            height: 50px;
+            width: 50px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="display">
+            <input type="text" />
+        </div>
+        <div class="buttons_2">
+            <button class="big_but_1">C</button>
+            <button class="big_but_2">=</button>
+        </div>
+        <div class="buttons">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>*</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>-</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>+</button>
+            <button>0</button>
+            <button>.</button>
+            <button>/</button>
+            <button>%</button>
+
+        </div>
+    </div>
+    <script>
+        let string = "";
+        let buttons = document.querySelectorAll("button");
+        Array.from(buttons).forEach((button) => {
+            button.addEventListener("click", (e) => {
+                if (e.target.innerHTML == "=") {
+                    string = eval(string);
+                    document.querySelector("input").value = string;
+                }
+                else if (e.target.innerHTML == "C") {
+                    string = "";
+                    document.querySelector("input").value = string;
+                }
+                else {
+                    string += e.target.innerHTML;
+                    document.querySelector("input").value = string;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
